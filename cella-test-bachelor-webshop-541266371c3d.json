@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cella-test-bachelor-webshop",
+  "private_key_id": "541266371c3da30062675fbbd4d57df5a2b25791",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCviWJ5ZwoIBmWW\n1MOC8bCHIWafYggRccR1sbMFbbjXV/00AeFf88EAcQ4Fw0jwGyL+Z9JnvXtyuNPc\nVnMdoE5XZmwwSOc2/EeycePJMDjW1UPng4nQ/Gzwg9CF4axjp+bWY4u/yd10lrCr\nvroKTvlZ0A2QcY0vph6oG+8S8SfF6eGBndHrIFw6CHA9HCIfU85CKei1m3ZWQ0aT\nkiNxXSgifgbRF0zCGSTX2eJu7f7pQDHXy7AUN/WyIK8h93C7ir4KEGb/oDPcvL0Y\n1+qCS/CXM/4JskRRKzXLcaETjOtNCrnC6kMMc495baFUcTL1vDJDf9PCcKMdb7la\nwrEjpEcRAgMBAAECggEAAosYfDrzBzJdB9Q/vDKnaLDSI2RsqqCJ7LzhM7afFU8s\n//M4Rk8yRGDu96RIhvKUtWgQkVBadNtC1hQiVTs+sVdegU1YHMjHWul5p/9I7otu\n4UCLl1Wl+C7nvz3ZpSTAVGpDMslgah1aFFX2TPqPlDaekLGFfruO4YeMlWsdNPnQ\nMN3QI9hF9rWTgMHiI4g4iS5wXyFb5V0gBribDEHOis1aQBXczD4D4yJv/jEvB7Vf\nwqzpTDwsNvTldyq5Zjt9jFttHPSylNXtpZoEFhjiJe7YZagImqY7rXCuKZFjBwYz\nmgM7hmXwJx8Hl7kJmoAIzqRePDKnv1vvlUNG22RX4QKBgQDmArDg1cEA0NLpL88h\nUdxADtE93hZU/XmpAqtWtPCusw+uCkeRZ2bWV2qrzH9u3FOM3DQPb+IpoSIDlUCI\nFkqYeMfGr2p8HSlTJy1uZpNS6ePYjCH7EXLIYslqfW9jSQa6BmZx/pgVo8hrMnfm\nCuvMvgUZwraC4BDwNOsEilt9IQKBgQDDXvomeMsP/uR9aH09FJx9KHOHUg64HCOj\n6MnhWMMjBEK1VTIzQ2084w2rO/zVZl9ZkPh4jONZfHM921oqhfkmZore/i9n55vG\nrXbfoHSpYvklVqAa9qtqWJHxmn/56Trg9hoXJeUq7XBQB8EI9+t1dt+1C0x7U4MY\njufNCjEb8QKBgBCELPNYJg3K8Poxpqv71tb6uWe55NyhfvT17hvBzm6dCQk0T8NP\nK4FEsbI4cwYg6Bb7UPmyzQi0O18KfqHHCAA+3AmWWw0igu8npwmAcB/KD8Ri+6Wt\nsRJWlaQB8detTMBa6UxSPdV/90pLS3THX/tJwdABvV1UfaLiCeY/kSZBAoGBAIgR\ngg+BWYwObnyZZYBA9qyEm9HHaND5aCkkXFZCR8X/laZNa+UgNNiPGloEMZc+8XGj\n8imjlkQg1PJj72xmWpxQFrAwQDwRpwC8l2owio/eir9ikae13LT4cszeWftoYMWF\nIa61ieJX9D0I6XyhjrAE1tF0yROrmkZkYTUAwCtBAoGAanBJQvvu1TMAeni2l2tD\nSx5rGjdchqIdrHtxaZm1d1DbSzSzEkFqAL0EmqZ9/Ux7JvUkZiFc1dmNe/2xB/Ij\n/hcTpPR71F86k2o9xuShjQIC6jG1prSWo7ogToUwpc4Jzq843R532phPGpJjcpE/\nbj0YrfPIQQg+h09Zt34hGyI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firestore-access@cella-test-bachelor-webshop.iam.gserviceaccount.com",
+  "client_id": "102169943044222830051",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestore-access%40cella-test-bachelor-webshop.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
