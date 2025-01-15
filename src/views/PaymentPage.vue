@@ -69,7 +69,6 @@
             </select>
           </div>
 
-
           <hr class="my-4" />
 
           <!-- Stripe Card Element -->
@@ -121,7 +120,6 @@
           <p class="text-xl font-bold text-navbar-green">DKK {{ cartTotal }}</p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -148,6 +146,7 @@ import { ref, computed, onMounted } from 'vue';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCartStore } from '../stores/cartStore';
 import { useAuthStore } from '../stores/authStore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 export default {
   name: 'PaymentPage',
@@ -156,6 +155,7 @@ export default {
     const stripePromise = loadStripe('pk_test_51QafV7Ruib7MNBzAKFp8POBIkJ0r4LDGPXSvkNm4BHDuh0ffyRTbuFiDTZt072s8Oqp3Gc45xB0KVz27xoWrE67F00RkRvmhEq');
     const cartStore = useCartStore();
     const authStore = useAuthStore();
+    const db = getFirestore();
     const fullName = ref('');
     const address = ref('');
     const postalCode = ref('');
@@ -175,50 +175,61 @@ export default {
       elements = stripe.elements();
       card = elements.create('card');
       card.mount('#card-element');
+
+      // Fetch user data from Firestore
+      if (authStore.user) {
+        const userDoc = await getDoc(doc(db, 'users', authStore.user.uid));
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          fullName.value = authStore.user.displayName || '';
+          address.value = userData.address || '';
+          postalCode.value = userData.postalCode || '';
+          city.value = userData.city || '';
+        }
+      }
     });
 
     const handlePayment = async () => {
-  try {
-    // Step 1: Fetch the client secret from Backend
-    const response = await fetch('http://localhost:3000/create-payment-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: Math.round(cartTotal.value * 100) }), // Send the amount in the request
-    });
+      try {
+        // Step 1: Fetch the client secret from Backend
+        const response = await fetch('http://localhost:3000/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: Math.round(cartTotal.value * 100) }), // Send the amount in the request
+        });
 
-    const { clientSecret } = await response.json(); // Retrieve the clientSecret from the backend response
+        const { clientSecret } = await response.json(); // Retrieve the clientSecret from the backend response
 
-    // Step 2: Confirm the payment using the client secret
-    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: card,
-        billing_details: {
-          name: fullName.value,
-          address: {
-            line1: address.value,
-            city: city.value,
-            postal_code: postalCode.value,
-            country: country.value,
+        // Step 2: Confirm the payment using the client secret
+        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: fullName.value,
+              address: {
+                line1: address.value,
+                city: city.value,
+                postal_code: postalCode.value,
+                country: country.value,
+              },
+            },
           },
-        },
-      },
-    });
+        });
 
-    // Step 3: Handle payment result
-    if (error) {
-      console.error('Payment error:', error.message);
-      alert(`Payment failed: ${error.message}`);
-    } else if (paymentIntent.status === 'succeeded') {
-      console.log('Payment succeeded:', paymentIntent);
-      cartStore.cartItems.splice(0, cartStore.cartItems.length); // Clear the cart
-      orderCompleted.value = true; // Show order completion screen
-    }
-  } catch (err) {
-    console.error('Payment process error:', err.message);
-    alert(`Payment process failed: ${err.message}`);
-  }
-};
-
+        // Step 3: Handle payment result
+        if (error) {
+          console.error('Payment error:', error.message);
+          alert(`Payment failed: ${error.message}`);
+        } else if (paymentIntent.status === 'succeeded') {
+          console.log('Payment succeeded:', paymentIntent);
+          cartStore.cartItems.splice(0, cartStore.cartItems.length); // Clear the cart
+          orderCompleted.value = true; // Show order completion screen
+        }
+      } catch (err) {
+        console.error('Payment process error:', err.message);
+        alert(`Payment process failed: ${err.message}`);
+      }
+    };
 
     return {
       fullName,

@@ -15,6 +15,7 @@ import BlogPostPage from '../views/BlogPostPage.vue';
 import LoginPage from '../views/LoginPage.vue';
 import RegisterPage from '../views/RegisterPage.vue';
 import PaymentPage from '../views/PaymentPage.vue';
+import UserPanel from '../components/UserPanel.vue';
 
 // Import the authStore to guard routes
 import { useAuthStore } from '../stores/authStore';
@@ -27,6 +28,23 @@ const routes = [
     beforeEnter: (to, from, next) => {
       const authStore = useAuthStore();
       if (!authStore.isAuthenticated() || !authStore.isVerified() || !authStore.isAdmin()) {
+        // If not allowed, redirect to login (or anywhere else)
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath },
+        });
+      } else {
+        next();
+      }
+    },
+  },
+  {
+    path: '/user-panel',
+    component: UserPanel, 
+    // Route-level guard to ensure only authenticated and verified users
+    beforeEnter: (to, from, next) => {
+      const authStore = useAuthStore();
+      if (!authStore.isAuthenticated()) {
         // If not allowed, redirect to login (or anywhere else)
         next({
           path: '/login',
@@ -88,7 +106,7 @@ const routes = [
   {
     path: '/blog/:id',
     component: BlogPostPage,
-  },
+  }
 ];
 
 const router = createRouter({

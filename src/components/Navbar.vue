@@ -18,6 +18,16 @@
         >
           Admin Panel
         </router-link>
+
+        <span class="text-white hidden sm:inline">|</span>
+
+        <router-link id="admin-link"
+          to="/user-panel"
+          class="text-base text-whitefont-light hover:text-light-brown"
+        >
+          Brugerside
+        </router-link>
+
       </template>
 
       <template v-else>
