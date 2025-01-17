@@ -1,39 +1,53 @@
 <template>
-  <div class="user-panel">
-    <h2>User Information</h2>
+  <section class="container mt-10 mx-auto px-4 md:px10 flex items-center justify-center">
+  <div class="user-panel w-1/2 bg-white border rounded-lg shadow-lg p-8 ">
+    <h2 class="text-4xl font-bold text-dark-brown">Dine infomationer</h2>
     <div v-if="user">
-      <p><strong>Name:</strong> {{ user.name }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Address:</strong> {{ address }}</p>
-      <p><strong>Postal Code:</strong> {{ postalCode }}</p>
-      <p><strong>City:</strong> {{ city }}</p>
-      
-      <button @click="toggleNameChange" class="button-style">Change Name</button>
-      <div v-if="showNameChange" class="name-change">
-        <input v-model="newName" placeholder="Edit name" class="input-style" />
-        <button @click="updateName" class="button-style">Update Name</button>
+      <div class="flex items-center justify-between">
+        <p><strong>Navn:</strong> {{ user.name }}</p>
+        <button @click="toggleNameChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre navn</button>
       </div>
-      
-      <button @click="toggleAddressChange" class="button-style">Change Address</button>
+      <div v-if="showNameChange" class="name-change">
+        <input v-model="newName" placeholder="Nyt navn" class="input-style" />
+        <button @click="updateName" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div>
+          <p class=""><strong>Adresse:</strong> {{ address }}</p>
+          <p><strong>Postnr:</strong> {{ postalCode }}</p>
+          <p><strong>By:</strong> {{ city }}</p>
+        </div>
+        <div>
+          <button @click="toggleAddressChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre Adresse</button>
+        </div>
+      </div>
       <div v-if="showAddressChange" class="address-change">
         <input v-model="address" placeholder="Address" class="input-style" />
         <input v-model="postalCode" placeholder="Postal Code" class="input-style" />
         <input v-model="city" placeholder="City" class="input-style" />
-        <button @click="updateAddress" class="button-style">Update Address</button>
+        <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
       </div>
-      
-      <button @click="togglePasswordChange" class="button-style">Change Password</button>
+
+      <div class="flex items-center justify-between">
+        <div></div>       
+        <button @click="togglePasswordChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Skift kodeord</button>    
+      </div>
       <div v-if="showPasswordChange" class="password-change">
         <input v-model="currentPassword" type="password" placeholder="Current Password" class="input-style" />
         <input v-model="newPassword" type="password" placeholder="New Password" class="input-style" />
         <input v-model="confirmNewPassword" type="password" placeholder="Confirm New Password" class="input-style" />
-        <button @click="changePassword" class="button-style">Update Password</button>
+        
+        <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
       </div>
+      
     </div>
+    
     <div v-else>
       <p>Loading...</p>
     </div>
   </div>
+</section>
 </template>
 
 <script>
@@ -141,21 +155,6 @@ export default {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-}
-
-.button-style {
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button-style:hover {
-  background-color: #0056b3;
 }
 
 .password-change, .name-change, .address-change {
