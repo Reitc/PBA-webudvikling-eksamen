@@ -1,22 +1,22 @@
 <template>
   <section class="container mt-10 mx-auto px-4 md:px10 flex items-center justify-center">
   <div class="user-panel w-1/2 bg-white border rounded-lg shadow-lg p-8 ">
-    <h2 class="text-4xl font-bold text-dark-brown">Dine infomationer</h2>
+    <h2 class="text-4xl font-bold text-dark-brown mb-4">Dine informationer</h2>
     <div v-if="user">
       <div class="flex items-center justify-between">
-        <p><strong>Navn:</strong> {{ user.name }}</p>
+        <p class="text-lg text-black"><strong>Navn:</strong> {{ user.name }}</p>
         <button @click="toggleNameChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre navn</button>
       </div>
       <div v-if="showNameChange" class="name-change">
         <input v-model="newName" placeholder="Nyt navn" class="input-style" />
-        <button @click="updateName" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
+        <button @click="updateName" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
       </div>
 
       <div class="flex items-center justify-between">
         <div>
-          <p class=""><strong>Adresse:</strong> {{ address }}</p>
-          <p><strong>Postnr:</strong> {{ postalCode }}</p>
-          <p><strong>By:</strong> {{ city }}</p>
+          <p class="text-lg text-black"><strong>Adresse:</strong> {{ address }}</p>
+          <p class="text-lg text-black"><strong>Postnr:</strong> {{ postalCode }}</p>
+          <p class="text-lg text-black"><strong>By:</strong> {{ city }}</p>
         </div>
         <div>
           <button @click="toggleAddressChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre Adresse</button>
@@ -26,7 +26,7 @@
         <input v-model="address" placeholder="Address" class="input-style" />
         <input v-model="postalCode" placeholder="Postal Code" class="input-style" />
         <input v-model="city" placeholder="City" class="input-style" />
-        <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
+        <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
       </div>
 
       <div class="flex items-center justify-between">
@@ -37,8 +37,7 @@
         <input v-model="currentPassword" type="password" placeholder="Current Password" class="input-style" />
         <input v-model="newPassword" type="password" placeholder="New Password" class="input-style" />
         <input v-model="confirmNewPassword" type="password" placeholder="Confirm New Password" class="input-style" />
-        
-        <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Gem</button>
+        <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
       </div>
       
     </div>

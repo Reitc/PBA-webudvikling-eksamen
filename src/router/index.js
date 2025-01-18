@@ -41,7 +41,7 @@ const routes = [
   {
     path: '/user-panel',
     component: UserPanel, 
-    // Route-level guard to ensure only authenticated and verified users
+    // Route-level guard to ensure only authenticated users
     beforeEnter: (to, from, next) => {
       const authStore = useAuthStore();
       if (!authStore.isAuthenticated()) {
