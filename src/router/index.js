@@ -41,10 +41,10 @@ const routes = [
   {
     path: '/user-panel',
     component: UserPanel, 
-    // Route-level guard to ensure only authenticated users
+    // Route-level guard to ensure only authenticated + verified users
     beforeEnter: (to, from, next) => {
       const authStore = useAuthStore();
-      if (!authStore.isAuthenticated()) {
+      if (!authStore.isAuthenticated() || !authStore.isVerified()) {
         // If not allowed, redirect to login (or anywhere else)
         next({
           path: '/login',

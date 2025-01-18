@@ -176,18 +176,22 @@ export default {
       card = elements.create('card');
       card.mount('#card-element');
 
-      // Fetch user data from Firestore
-      if (authStore.user) {
+      // Check if a user is logged in
+      if (authStore.user) { 
+        // Fetch the user's document from Firestore
         const userDoc = await getDoc(doc(db, 'users', authStore.user.uid));
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          fullName.value = authStore.user.displayName || '';
+        // Check if the document exists in Firestore
+        if (userDoc.exists()) { 
+          // Retrieve data from the document
+          const userData = userDoc.data(); 
+          // Set the address, postal code and city field or an empty string
           address.value = userData.address || '';
           postalCode.value = userData.postalCode || '';
           city.value = userData.city || '';
         }
       }
     });
+    
 
     const handlePayment = async () => {
       try {

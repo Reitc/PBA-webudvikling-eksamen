@@ -23,9 +23,9 @@
         </div>
       </div>
       <div v-if="showAddressChange" class="address-change">
-        <input v-model="address" placeholder="Address" class="input-style" />
-        <input v-model="postalCode" placeholder="Postal Code" class="input-style" />
-        <input v-model="city" placeholder="City" class="input-style" />
+        <input v-model="address" placeholder="Adresse" class="input-style" />
+        <input v-model="postalCode" placeholder="Postnr" class="input-style" />
+        <input v-model="city" placeholder="By" class="input-style" />
         <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
       </div>
 
@@ -34,9 +34,9 @@
         <button @click="togglePasswordChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Skift kodeord</button>    
       </div>
       <div v-if="showPasswordChange" class="password-change">
-        <input v-model="currentPassword" type="password" placeholder="Current Password" class="input-style" />
-        <input v-model="newPassword" type="password" placeholder="New Password" class="input-style" />
-        <input v-model="confirmNewPassword" type="password" placeholder="Confirm New Password" class="input-style" />
+        <input v-model="currentPassword" type="password" placeholder="Nuværende kodeord" class="input-style" />
+        <input v-model="newPassword" type="password" placeholder="Nyt kodeord" class="input-style" />
+        <input v-model="confirmNewPassword" type="password" placeholder="Bekræft nyt kodeord" class="input-style" />
         <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
       </div>
       
