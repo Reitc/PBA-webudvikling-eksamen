@@ -5,11 +5,15 @@
     <div v-if="user">
       <div class="flex items-center justify-between">
         <p class="text-lg text-black"><strong>Navn:</strong> {{ user.name }}</p>
-        <button @click="toggleNameChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre navn</button>
+        <button @click="toggleNameChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">
+          Ændre navn
+        </button>
       </div>
       <div v-if="showNameChange" class="name-change">
         <input v-model="newName" placeholder="Nyt navn" class="input-style" />
-        <button @click="updateName" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
+        <button @click="updateName" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">
+          Gem
+        </button>
       </div>
 
       <div class="flex items-center justify-between">
@@ -19,25 +23,33 @@
           <p class="text-lg text-black"><strong>By:</strong> {{ city }}</p>
         </div>
         <div>
-          <button @click="toggleAddressChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Ændre Adresse</button>
+          <button @click="toggleAddressChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">
+            Ændre adresse
+          </button>
         </div>
       </div>
       <div v-if="showAddressChange" class="address-change">
         <input v-model="address" placeholder="Adresse" class="input-style" />
         <input v-model="postalCode" placeholder="Postnr" class="input-style" />
         <input v-model="city" placeholder="By" class="input-style" />
-        <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
+        <button @click="updateAddress" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">
+          Gem
+        </button>
       </div>
 
       <div class="flex items-center justify-between">
         <div></div>       
-        <button @click="togglePasswordChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">Skift kodeord</button>    
+        <button @click="togglePasswordChange" class="bg-light-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition">
+          Skift kodeord
+        </button>    
       </div>
       <div v-if="showPasswordChange" class="password-change">
         <input v-model="currentPassword" type="password" placeholder="Nuværende kodeord" class="input-style" />
         <input v-model="newPassword" type="password" placeholder="Nyt kodeord" class="input-style" />
         <input v-model="confirmNewPassword" type="password" placeholder="Bekræft nyt kodeord" class="input-style" />
-        <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">Gem</button>
+        <button @click="changePassword" class="bg-dark-green text-l text-white font-semibold py-2 px-4 rounded hover:bg-white hover:text-dark-green transition mb-6">
+          Gem
+        </button>
       </div>
       
     </div>
@@ -100,7 +112,11 @@ export default {
 
     const updateAddress = async () => {
       if (user.value) {
-        await setDoc(doc(db, 'users', auth.currentUser.uid), { address: address.value, postalCode: postalCode.value, city: city.value }, { merge: true });
+        await setDoc(doc(db, 'users', auth.currentUser.uid), { 
+          address: address.value, 
+          postalCode: postalCode.value, 
+          city: city.value 
+        }, { merge: true });
         showAddressChange.value = false;
       }
     };
@@ -129,10 +145,10 @@ export default {
       try {
         await reauthenticateWithCredential(user, credential);
         await updatePassword(user, newPassword.value);
-        alert("Password updated successfully");
+        alert("Adgangskode opdateret");
         showPasswordChange.value = false;
       } catch (error) {
-        alert("Error updating password: " + error.message);
+        alert("Fejl ved opdatering af adgangskode: " + error.message);
       }
     };
 

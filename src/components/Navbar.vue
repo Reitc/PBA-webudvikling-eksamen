@@ -21,7 +21,7 @@
 
         <span class="text-white hidden sm:inline">|</span>
 
-        <router-link id="admin-link"
+        <router-link id="user-link"
           to="/user-panel"
           class="text-base text-whitefont-light hover:text-light-brown"
         >
