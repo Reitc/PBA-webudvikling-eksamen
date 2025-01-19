@@ -135,7 +135,7 @@ export default {
 
     const changePassword = async () => {
       if (newPassword.value !== confirmNewPassword.value) {
-        alert("New passwords do not match");
+        alert("Ny adgangskode stemmer ikke overens");
         return;
       }
 
